@@ -1,0 +1,57 @@
+.nav {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  &-list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__link {
+      min-height: var(--root-header-h);
+
+      text-transform: uppercase;
+      color: rgba(var(--cl-w), .8);
+      font-size: var(--t-sm);
+      font-weight: 500;
+      @include dfc;
+
+      transition: 300ms ease;
+
+      padding: 0 1rem;
+
+      @include hover {
+        color: rgba(var(--cl-w), 1);
+      }
+    }
+  }
+}
+
+@include tablet {
+  .nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 6;
+
+    background-color: rgba(var(--cl-dark), 1);
+
+    transform: translate(0);
+
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    transition: all 400ms ease;
+  }
+}
