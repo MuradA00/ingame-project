@@ -10,17 +10,33 @@ const hideFooterHandler = () => {
 
 footerHideButton.addEventListener('click', hideFooterHandler);
 
-if (Swiper) {
-
-}
-
 var swiper = new Swiper('.slider-container', {
   slidesPerView: 'auto',
+  direction: 'horizontal',
+  loop: true,
+  initialSlide: 1,
   spaceBetween: 14,
   speed: 700,
+  longSwipes: false,
   breakpoints: {
     768: {
       spaceBetween: 40
     }
   }
+});
+
+const slider = document.querySelector('.slider-container');
+const images = document.querySelectorAll('.slider-images__item');
+swiper.on('slideChange', function () {
+    const activeSlide = slider.querySelector('.swiper-slide-active');
+    const slideOrder = activeSlide.getAttribute('data-order');
+    images.forEach((image) => {
+        const imageOrder = image.getAttribute('data-order');
+        if (imageOrder === slideOrder) {
+            image.classList.add('slider-images__item--active');
+        } else {
+            image.classList.remove('slider-images__item--active');
+        }
+
+    });
 });

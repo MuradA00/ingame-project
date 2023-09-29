@@ -1,12 +1,11 @@
 html {
   box-sizing: border-box;
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
   position: relative;
-  overflow-x: inherit;
+  overflow-x: hidden;
   width: 100%;
   min-height: 100vh;
   margin: 0;
@@ -15,7 +14,7 @@ body {
   font-size: 16px;
   line-height: normal;
   font-family: var(--ff);
-  color: rgba(var(--cl-w),1.0);
+  color: rgba(var(--cl-w), 1.0);
 
   background: rgba(var(--cl-b), 1) url('../../img/global/bg-body.jpg') center / cover no-repeat;
   background-attachment: fixed;
@@ -52,7 +51,11 @@ main {
   flex: 1;
   position: relative;
 
-  padding: calc(120px + var(--root-header-h)) 0 94px 0;
+  overflow: hidden;
+
+  bottom: calc(-1 * (calc(var(--hide-btn-ratio) / 2)));
+
+  padding: calc(20px + var(--root-header-h)) 0 94px 0;
 
   @include tablet {
     padding: calc(30px + var(--root-header-h)) 0 30px 0;
@@ -63,7 +66,7 @@ main {
 
     background: linear-gradient(90deg, #1E3240 11.08%, rgba(30, 50, 64, 0.00) 77.12%);
 
-    width: 20%;
+    width: 15%;
     height: calc(100% + (var(--hide-btn-ratio) / 2));
 
     top: 0;
@@ -72,6 +75,21 @@ main {
     pointer-events: none;
 
     z-index: 4;
+  }
+  &::after {
+    @include pseudo;
+
+    width: 100%;
+    height: 100%;
+
+    background: url('../../img/slider/dust-image.png') top left / cover no-repeat;
+
+    top: 0;
+    left: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
   }
 }
 
