@@ -5,6 +5,7 @@
   --active-slider-h: 500px;
   --active-slider-image-h: 95%;
   --pm: 4px;
+  --root-transition-short: all 300ms ease;
   --root-transition: all 400ms ease;
   --info-translate: 17px;
   --active-logo-w: 230px;
@@ -24,7 +25,7 @@
 
       transition: var(--root-transition);
 
-      transform: translateX(1.5rem);
+      transform: translateX(2.5rem);
 
       opacity: 0;
 
@@ -94,13 +95,13 @@
 
       transform: translateY(var(--info-translate));
 
-      transition: var(--root-transition);
+      transition: var(--root-transition) 300ms;
 
       opacity: 0;
     }
     &__logo {
       max-width: 200px;
-      transition: var(--root-transition);
+      transition: var(--root-transition) 200ms;
 
       img {
         display: block;
@@ -126,6 +127,7 @@
       left: 0;
 
       transition: var(--root-transition);
+
     }
     &__inner-frame {
       top: 50%;
@@ -138,10 +140,15 @@
       transition: var(--root-transition);
 
       opacity: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     &__shape {
       top: 50%;
-      transform: translateY(-50%) scale(1.2);
+      transform: translateY(-50%);
       width: 9px;
       height: 130px;
       transition: all 300ms ease;
@@ -175,7 +182,7 @@
       align-items: center;
       text-align: center;
 
-      transition: var(--root-transition)
+      transition: var(--root-transition);
     }
     &__inner {
       position: absolute;
@@ -192,7 +199,7 @@
   .swiper-slide-active {
     width: var(--active-slider-w);
     height: var(--active-slider-h);
-    margin-left: calc(var(--active-slider-w) / 3);
+    margin-left: calc(var(--active-slider-w) / 5);
     will-change: width, height;
 
     .slider-item__outer-frame {
@@ -228,7 +235,7 @@
   }
 }
 
-@include tablet {
+@include laptop {
   .slider {
     --slider-item-h: 300px;
     --slider-item-w: 220px;
@@ -240,13 +247,38 @@
     &-images {
       &__item {
         max-width: 400px;
-        height: 600px;
+        height: 550px;
       }
     }
     &-item {
+      &__image {
+        img {
+          object-fit: contain;
+        }
+      }
+      &__outer-frame {
+        img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__shape {
+        &--right {
+          right: 6px;
+        }
+        &--left {
+          left: 6px;
+        }
+      }
       &__inner-frame {
-        width: 92%;
-        height: 92%;
+        width: 90%;
+        height: 90%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -261,15 +293,49 @@
 
     min-height: 400px;
 
+    &-item {
+      &__shape {
+        width: 6px;
+        height: 80px;
+        &--left {
+          left: 22px;
+        }
+        &--right {
+          right: 22px;
+        }
+      }
+      &__inner-frame {
+        width: 90%;
+        height: 90%;
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
     &-images {
       &__item {
-        max-width: 200px;
-        height: 300px;
+        max-width: 250px;
+        height: 350px;
+        right: -3rem;
+        &--large {
+          right: -7rem;
+          max-width: 400px;
+          height: 500px;
+        }
       }
     }
 
     .swiper-slide-active {
-      margin-left: calc(var(--active-slider-w) / 5);
+      margin-left: calc(var(--active-slider-w) / 8);
+    }
+  }
+}
+
+@include ios {
+  .slider {
+    .swiper-slide-active {
+      margin-left: calc(var(--active-slider-w) / 20);
     }
   }
 }
