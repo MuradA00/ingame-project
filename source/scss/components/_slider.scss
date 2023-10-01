@@ -165,7 +165,7 @@
     height: var(--slider-item-h);
     will-change: width, height;
     position: relative;
-
+    cursor: pointer;
     transition: all 600ms ease;
 
     position: relative;
