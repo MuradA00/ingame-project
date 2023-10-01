@@ -27,6 +27,7 @@ freeModeSticky: true,
 loop: true,
 loopAdditionalSlides: slidesNum,
 loopedSlides: slidesNum,
+slidesPerGroup: 1,
 slidesPerView: 'auto',
 speed: 700,
 breakpoints: {
