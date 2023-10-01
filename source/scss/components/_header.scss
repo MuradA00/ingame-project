@@ -14,7 +14,7 @@
   overflow: hidden;
   z-index: 5;
 
-  // backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 
   &::before {
     @include pseudo;

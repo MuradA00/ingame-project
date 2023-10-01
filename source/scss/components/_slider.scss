@@ -14,8 +14,6 @@
   --actions-h: 54px;
   --button-shape: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
 
-  min-height: 920px;
-
   &-flexbox {
     margin-left: var(--root-slider-spacing);
 
@@ -119,7 +117,7 @@
       z-index: 4;
       position: absolute;
       right: 0;
-      bottom: calc(-1 * (var(--hide-btn-ratio) / 2) - 0px);
+      bottom: calc(-1 * (var(--hide-btn-ratio) / 2) - 100px);
       pointer-events: none;
       max-width: 800px;
       width: 100%;
@@ -134,8 +132,12 @@
       will-change: opacity, transform;
 
       &:nth-child(1) {
-        max-width: 1500px;
-        right: -320px;
+        max-width: 1200px;
+        right: -50px;
+
+        img {
+          object-fit: contain;
+        }
       }
 
       &--active {
@@ -152,9 +154,7 @@
     }
   }
   &-container {
-    height: calc(var(--active-slider-h) + 4rem);
-
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(90px, 7.5vw, 120px);
   }
   &-list {
     display: flex;
@@ -163,7 +163,7 @@
   &-item {
     width: var(--slider-item-w);
     height: var(--slider-item-h);
-
+    will-change: width, height;
     position: relative;
 
     transition: all 600ms ease;
@@ -173,8 +173,14 @@
     &::before {
       @include pseudo;
 
-      width: 600px;
-      height: 600px;
+      pointer-events: none;
+
+      opacity: 0;
+
+      transition: opacity 300ms ease;
+
+      width: 900px;
+      height: 900px;
       background-image: url('../../img/slider/shadow-effect.webp');
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -182,7 +188,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      z-index: -1;
+      // z-index: -1;
     }
     user-select: none;
     &__square-frame {
@@ -329,7 +335,9 @@
     width: var(--active-slider-w);
     height: var(--active-slider-h);
     margin-left: var(--root-slider-spacing);
-    will-change: width, height;
+    &::before {
+      opacity: 1;
+    }
     .slider-item__outer-frame {
       opacity: 0;
     }
@@ -381,12 +389,16 @@
     --active-slider-w: 300px;
     --active-slider-h: 400px;
 
-    min-height: 600px;
-
     &-images {
       &__item {
-        max-width: 400px;
+        max-width: 500px;
         height: 550px;
+
+
+          img {
+            object-fit: contain;
+          }
+
       }
     }
     &-item {
@@ -422,21 +434,51 @@
     }
   }
 }
-
+@include small-tablet {
+  .slider {
+    &-images {
+      display: none;
+    }
+    &-item {
+      &__logo {
+        max-width: 70px;
+      }
+    }
+    .swiper-slide-active {
+      .slider {
+        &-item {
+          &__logo {
+            max-width: 120px;
+          }
+        }
+      }
+    }
+  }
+}
+@include tablet {
+  .slider {
+    &-info {
+      grid-gap: 1rem;
+      &__description {
+        max-width: 400px;
+        font-size: var(--t-xs);
+      }
+    }
+  }
+}
 @include mobile {
   .slider {
     --slider-item-h: 180px;
-    --slider-item-w: 160px;
+    --slider-item-w: 200px;
     --active-slider-w: 260px;
     --active-slider-h: 300px;
     --root-slider-spacing: calc(var(--active-slider-w) / 8);
-
-    min-height: 400px;
-
     &-flexbox {
-      margin-left: calc(var(--active-slider-w) / 5);
+      margin-left: calc(var(--active-slider-w) / 6);
     }
-
+    &-info {
+      max-width: 320px;
+    }
     &-item {
       &__shape {
         width: 6px;
@@ -461,9 +503,8 @@
       &__item {
         max-width: 250px;
         height: 350px;
-        right: -3rem;
+
         &--large {
-          right: -7rem;
           max-width: 400px;
           height: 500px;
         }
@@ -475,5 +516,9 @@
 @include ios {
   .slider {
     --root-slider-spacing: calc(var(--active-slider-w) / 20);
+
+    &-flexbox {
+      margin-left: calc(var(--active-slider-w) / 10);
+    }
   }
 }

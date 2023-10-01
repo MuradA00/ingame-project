@@ -22,8 +22,8 @@ footerHideButton.addEventListener('click', hideFooterHandler);
 const slidesNum = 9;
 var swiper = new Swiper('.slider-container', {
 freeMode: false,
-freeModeMomentumBounce: false,
 freeModeSticky: true,
+autoHeight: true,
 loop: true,
 loopAdditionalSlides: slidesNum,
 loopedSlides: slidesNum,
@@ -54,13 +54,3 @@ swiper.on('slideChange', function () {
     }
   });
 });
-
-const sliderHandler = () => {
-  const sliders = document.querySelectorAll('.swiper-slide');
-
-  sliders[0].classList.add('swiper-slide-active');
-}
-
-if (Swiper) {
-  sliderHandler();
-}

@@ -52,7 +52,7 @@ main {
   position: relative;
   overflow: hidden;
   bottom: calc(-1 * (calc(var(--hide-btn-ratio) / 2)));
-  padding: calc(var(--root-header-h) - (var(--hide-btn-ratio) / 3)) 0 94px 0;
+  padding: calc(clamp(80px, 8.125vw, 130px) + var(--root-header-h) - (var(--hide-btn-ratio) / 3)) 0 clamp(60px, 5.875vw, 94px) 0;
   &::before {
     @include pseudo;
 
@@ -61,7 +61,7 @@ main {
     width: 10%;
     height: calc(100% + (var(--hide-btn-ratio) / 2));
 
-    top: 0;
+  top: 0;
     left: 0;
 
     pointer-events: none;
