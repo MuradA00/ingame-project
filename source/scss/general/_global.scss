@@ -46,7 +46,23 @@ body {
 .body-locked {
   overflow: hidden;
 }
+.gradient {
+  --gradient-ratio: clamp(600px, 121.25vw, 1940px);
 
+  position: absolute;
+  width: var(--gradient-ratio);
+  height: var(--gradient-ratio);
+  right: calc(var(--gradient-ratio) / -2);
+  top: 0;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 1100px;
+  background: radial-gradient(50% 50% at 50% 50%, #1E3240 0%, rgba(30, 50, 64, 0.00) 100%);
+
+  @include mobile {
+    --gradient-ratio: 400px;
+  }
+}
 main {
   flex: 1;
   position: relative;
@@ -66,23 +82,24 @@ main {
 
     pointer-events: none;
 
-    z-index: 4;
-  }
-  &::after {
-    @include pseudo;
-
-    width: 100%;
-    height: 100%;
-
-    background: url('../../img/slider/dust-image.webp') top left / cover no-repeat;
-
-    left: 0;
-    bottom: -20%;
     z-index: 3;
-    pointer-events: none;
   }
 }
+.shadow-bottom {
+  background-size: 1920px 100%;
+  background-image: url('../../img/slider/dust-image.webp');
+  bottom: -270px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: 4;
+  position: absolute;
+  pointer-events: none;
 
+  @include tablet {
+    bottom: -200px;
+  }
+}
 *,
 *::after,
 *::before {

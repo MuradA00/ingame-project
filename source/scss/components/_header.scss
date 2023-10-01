@@ -47,6 +47,9 @@
     gap: 6px;
     justify-content: center;
     margin-left: .5rem;
+    position: relative;
+    z-index: 10;
+    width: 26px;
     &__bar {
       width: 1.625rem;
       height: 2px;
@@ -54,8 +57,34 @@
       display: block;
 
       clip-path: polygon(7% 0, 100% 0, 93% 100%, 0% 100%);
-
+      transition: all 400ms ease;
       background-color: rgba(var(--cl-w), 1);
+
+      position: absolute;
+
+      &:nth-child(1) {
+        top: 15px;
+      }
+      &:nth-child(2) {
+        bottom: 15px;
+      }
+    }
+    &--active {
+      .header {
+        &-burger {
+          &__bar {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(var(--rotate));
+            &:nth-child(2) {
+              --rotate: 45deg;
+            }
+            &:nth-child(1) {
+              --rotate: -45deg;
+            }
+          }
+        }
+      }
     }
   }
   &-logo {
