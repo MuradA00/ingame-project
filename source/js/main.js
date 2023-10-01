@@ -19,24 +19,25 @@ const hideFooterHandler = () => {
 }
 
 footerHideButton.addEventListener('click', hideFooterHandler);
-
+const slidesNum = 9;
 var swiper = new Swiper('.slider-container', {
-  slidesPerView: 'auto',
-  slidesPerGroup: 1,
-  loop: true,
-  initialSlide: 0,
-  centerSlide: true,
-  spaceBetween: 0,
-  speed: 700,
-  breakpoints: {
-    768: {
-      spaceBetween: 40
-    }
+freeMode: false,
+freeModeMomentumBounce: false,
+freeModeSticky: true,
+loop: true,
+loopAdditionalSlides: slidesNum,
+loopedSlides: slidesNum,
+slidesPerView: 'auto',
+speed: 700,
+breakpoints: {
+  576: {
+    spaceBetween: 40
   }
+}
 });
 
 swiper.on('slideChange', function () {
-  const activeIndex = swiper.realIndex; // Получаем индекс текущего активного слайда
+  const activeIndex = swiper.realIndex;
   images.forEach((image, index) => {
       if (index === activeIndex) {
           image.classList.add('slider-images__item--active');

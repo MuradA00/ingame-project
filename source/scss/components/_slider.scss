@@ -45,8 +45,6 @@
       background-size: 100% var(--actions-h);
       background-repeat: no-repeat;
 
-      backdrop-filter: blur(2px);
-
       transition: transform 200ms ease;
 
       @include hover {
@@ -174,6 +172,17 @@
 
     &::before {
       @include pseudo;
+
+      width: 600px;
+      height: 600px;
+      background-image: url('../../img/slider/shadow-effect.webp');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      z-index: -1;
     }
     user-select: none;
     &__square-frame {
