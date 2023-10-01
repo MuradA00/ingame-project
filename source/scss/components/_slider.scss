@@ -177,7 +177,7 @@
 
       opacity: 0;
 
-      transition: opacity 300ms ease;
+      transition: all 300ms ease;
 
       width: 900px;
       height: 900px;
@@ -480,6 +480,10 @@
       max-width: 320px;
     }
     &-item {
+      &::before {
+        width: 600px;
+        height: 600px;
+      }
       &__shape {
         width: 6px;
         height: 80px;
