@@ -20,15 +20,14 @@ body {
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
-
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
-  // for text resize
+  // padding-right: var(--scrollbar-width);
 
   &::-webkit-scrollbar {
-    background-color: rgba(var(--cl-w), .2);
-    width: 6px;
-
-
+    // background-color: rgba(var(--cl-w), .2);
+    // width: var(--scrollbar-width);
+    display: none;
   }
   &::-webkit-scrollbar-thumb {
     background-color: rgba(var(--cl-main), .7);
@@ -86,7 +85,8 @@ main {
   }
 }
 .shadow-bottom {
-  background-size: 1920px 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   background-image: url('../../img/slider/dust-image.webp');
   bottom: -270px;
   width: 100%;

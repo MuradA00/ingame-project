@@ -18,6 +18,7 @@ disableOnInteraction: true,
 loopAdditionalSlides: slidesNum,
 loopedSlides: slidesNum,
 slidesPerGroup: 1,
+initialSlide: 0,
 slidesPerView: 'auto',
 speed: 400,
 autoplay: {
