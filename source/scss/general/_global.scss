@@ -97,7 +97,8 @@ main {
   pointer-events: none;
 
   @include tablet {
-    bottom: -200px;
+    bottom: calc(-1 * (var(--hide-btn-ratio) / 2));
+    background-size: auto 100%;
   }
 }
 *,
