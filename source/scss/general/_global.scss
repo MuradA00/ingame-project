@@ -84,6 +84,9 @@ main {
     z-index: 3;
   }
 }
+.main-padding {
+  padding-top: clamp(6rem, 8.75vw, 140px);
+}
 .shadow-bottom {
   background-size: 100% 100%;
   background-repeat: no-repeat;
